@@ -18,7 +18,13 @@ public class TestCorsApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("*");
+				registry.addMapping("/**")
+						.allowedOrigins("*")
+						.allowedMethods("GET, PUT, POST, DELETE, OPTIONS")
+						.allowedHeaders("Origin, Authorization, Content-Type")
+						.exposedHeaders("")
+						.maxAge(3600)
+						.allowCredentials(false);
 			}
 		};
 	}
