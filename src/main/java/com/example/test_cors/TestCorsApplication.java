@@ -20,8 +20,9 @@ public class TestCorsApplication {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
 						.allowedOrigins("*")
-						.allowedMethods("GET, PUT, POST, DELETE, OPTIONS")
-						.allowedHeaders("Origin, Authorization, Content-Type");
+						.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+						.allowedHeaders("*")
+						.allowCredentials(false);;
 			}
 		};
 	}
