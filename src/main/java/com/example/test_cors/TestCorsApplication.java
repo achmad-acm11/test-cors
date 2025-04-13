@@ -24,7 +24,7 @@ public class TestCorsApplication {
 						.allowedHeaders("Origin, Authorization, Content-Type")
 						.exposedHeaders("")
 						.maxAge(3600)
-						.allowCredentials(false);
+						.allowCredentials(true);
 			}
 		};
 	}
