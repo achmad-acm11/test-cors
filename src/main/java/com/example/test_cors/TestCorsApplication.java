@@ -1,7 +1,9 @@
 package com.example.test_cors;
 
+import com.example.test_cors.middleware.JwtAuthFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -25,5 +27,14 @@ public class TestCorsApplication {
 						.allowCredentials(false);;
 			}
 		};
+	}
+	@Bean
+	public FilterRegistrationBean<JwtAuthFilter> jwtFilter() {
+		FilterRegistrationBean<JwtAuthFilter> registrationBean = new FilterRegistrationBean<>();
+		registrationBean.setFilter(new JwtAuthFilter());
+		registrationBean.addUrlPatterns("/api/v1/*");
+		registrationBean.setOrder(1);
+
+		return registrationBean;
 	}
 }
