@@ -1,0 +1,10 @@
+version: '3.1'
+services:
+  cors-service-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cors-service-app
+    restart: always
+    ports:
+      - '8080:8080'
