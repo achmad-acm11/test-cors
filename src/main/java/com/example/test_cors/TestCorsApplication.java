@@ -21,10 +21,7 @@ public class TestCorsApplication {
 				registry.addMapping("/**")
 						.allowedOrigins("*")
 						.allowedMethods("GET, PUT, POST, DELETE, OPTIONS")
-						.allowedHeaders("Origin, Authorization, Content-Type")
-						.exposedHeaders("")
-						.maxAge(3600)
-						.allowCredentials(true);
+						.allowedHeaders("Origin, Authorization, Content-Type");
 			}
 		};
 	}
