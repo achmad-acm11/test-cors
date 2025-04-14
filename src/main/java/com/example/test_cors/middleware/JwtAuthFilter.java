@@ -4,12 +4,14 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
 @Component
+@Slf4j
 public class JwtAuthFilter implements Filter {
     @Override
     public void doFilter(
@@ -27,12 +29,15 @@ public class JwtAuthFilter implements Filter {
 
         final String authHeader = request.getHeader("Authorization");
 
+        log.info("authHeader: {}", authHeader);
+
         if (authHeader == null || !authHeader.startsWith("Bearer ")){
             response.setContentType("application/json");
             response.getWriter().print("{\"error\":\"Invalid token\"}");
             return;
         }
-
+        String jwtToken = authHeader.replace("Bearer ", "");
+        log.info("jwtToken: {}", jwtToken);
         filterChain.doFilter(request, response);
     }
 //    @Override
