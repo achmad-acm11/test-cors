@@ -15,26 +15,26 @@ public class TestCorsApplication {
 		SpringApplication.run(TestCorsApplication.class, args);
 	}
 
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**")
-						.allowedOrigins("*")
-						.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-						.allowedHeaders("*")
-						.allowCredentials(false);;
-			}
-		};
-	}
-	@Bean
-	public FilterRegistrationBean<JwtAuthFilter> jwtFilter() {
-		FilterRegistrationBean<JwtAuthFilter> registrationBean = new FilterRegistrationBean<>();
-		registrationBean.setFilter(new JwtAuthFilter());
-		registrationBean.addUrlPatterns("/api/v1/*");
-		registrationBean.setOrder(1);
-
-		return registrationBean;
-	}
+//	@Bean
+//	public WebMvcConfigurer corsConfigurer() {
+//		return new WebMvcConfigurer() {
+//			@Override
+//			public void addCorsMappings(CorsRegistry registry) {
+//				registry.addMapping("/**")
+//						.allowedOrigins("*")
+//						.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+//						.allowedHeaders("*")
+//						.allowCredentials(false);;
+//			}
+//		};
+//	}
+//	@Bean
+//	public FilterRegistrationBean<JwtAuthFilter> jwtFilter() {
+//		FilterRegistrationBean<JwtAuthFilter> registrationBean = new FilterRegistrationBean<>();
+//		registrationBean.setFilter(new JwtAuthFilter());
+//		registrationBean.addUrlPatterns("/api/v1/*");
+//		registrationBean.setOrder(1);
+//
+//		return registrationBean;
+//	}
 }
